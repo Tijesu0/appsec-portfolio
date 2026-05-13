@@ -6,11 +6,13 @@ Business Logic Vulnerability-Minimum Order Value Enforcment Bypass
 * Component: Backend order processing service
 * Constraint: Minimum order value required for order eligibility
 
-#2.Securit Invariant
-The backend must enforce a minimum order threshold (less than or equal to defined limit) using server authoritative pricing at the point od order creation, independent of client-provided values.
+#2.Security Invariant
+
+The backend must enforce a minimum order threshold (less than or equal to defined limit) using server authoritative pricing at the point of order creation, independent of client-provided values.
 
 
-#3.Vulnerability Descriptionin 
+#3.Vulnerability Description
+
 The system fails to consistently enforce the minimum order value constraint at the server-side order creation boundary. By manipulating order related request data prior to finalization, it is possible 
 to create an order whose computed total falls below the required threshold, while still being accepted and persisted by the backend.
 
