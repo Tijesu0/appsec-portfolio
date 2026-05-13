@@ -1,0 +1,26 @@
+#Title:    Price Manipulation in Business Logic Flow
+
+#Context:  A lab simulating a business logic flaw in the pricing logic. 
+
+#Feature: Order/Payment work flow
+
+#Expected Invariant: price should be derived and revalidated from a server authoritative source.
+
+On taking the Add to Cart request to my proxy, i modified the price and sent the request and it processed without rejection, then i started another request and modified the price and the item was added to cart with wthe mofified price.
+On clicking the checkout button the order was finalized using the modified state.
+
+#Steps To Reproduce:
+1) make a request to add an item to cart and intercept it via proxy.
+2) Reduce the price and forward the request.
+3) Go to cart and finalize order using modified state.
+
+#Broken Invariant:  price was not revalidated from a server authoritative source and a client controlled value was used without recomputation.
+
+#Impact: 
+1) direct financial manipulation.
+2) pricing arbitrage risk.
+3) integrity violation of order state.
+
+#Fix: Pricing must be recompute or revalidated against server-side authoritative data at the final state transition.
+
+
